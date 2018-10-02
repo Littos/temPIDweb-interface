@@ -1,0 +1,7 @@
+0
+1 ramp-to-in 16.5 90
+2 hold-for 60
+3 ramp-to-in 17.5 90
+4 hold-for 60
+5 next-step 1
+end

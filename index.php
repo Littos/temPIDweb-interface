@@ -271,7 +271,7 @@ console.log(data);
       .style("text-anchor", "start")
       .attr("transform", "translate(" + (width/2-125) + "," + (height +25) + ")")
       .attr("font-size", "150%")
-      .text(data[data.length-1].mv.toFixed(1) + " C" );
+      .text(data[data.length-1].mv.toFixed(2) + " C" );
       
   g.append("text")
       .attr("class", "sp_text")
@@ -282,7 +282,7 @@ console.log(data);
       .style("text-anchor", "middle")
       .attr("transform", "translate(" + width/2 + "," + (height +25) + ")")
       .attr("font-size", "150%")
-      .text("(" + data[data.length-1].sp + " C )");
+      .text("(" + data[data.length-1].sp.toFixed(2) + " C )");
       
   g.append("text")
       .attr("class", "op_text")
@@ -351,9 +351,9 @@ function updateData() {
     
     //Update numeric instant values under the graph too
     svg.select(".mv_text")
-			.text(data[data.length-1].mv.toFixed(1) + " C" );
+			.text(data[data.length-1].mv.toFixed(2) + " C" );
     svg.select(".sp_text")
-			.text("(" + data[data.length-1].sp + " C )");;
+			.text("(" + data[data.length-1].sp.toFixed(2) + " C )");;
     svg.select(".op_text")
 			.text(data[data.length-1].op.toFixed(1) + "%");						
 	  });

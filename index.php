@@ -440,23 +440,34 @@ function updateData() {
 		<li>hold-for XXX  [XXX min]</li>
 		<li>wait-to-reach XXX  [XXX degC]</li>
 		<li>new-sp XXX  [XXX degC]</li>
+		<li>new-sp XXX [XXX degC]</li>
+		<li>next-step # [# step number]</li>
 	</ul>
 	<br>
 	<?php
 
 		ini_set("auto_detect_line_endings", true);
-		$seqfil = fopen("sequence", "r") or die("Unable to open seq file!");
+		$seqfil = fopen("sequence", "r") or die("Unable to open sequence file!");
 		$index=0;
 		while(!feof($seqfil)) {
 			$seq[$index]=fgets($seqfil);
 			$index++;
 		}
 		fclose($seqfil);
+		
+		$seq_status_fil = fopen("sequence_status", "r") or die("Unable to open sequence_status file!");
+		$index=0;
+		while(!feof($seq_status_fil)) {
+			$seq_status[$index]=fgets($seq_status_fil);
+			$index++;
+		}
+		fclose($seq_status);
+		
 		ini_set("auto_detect_line_endings", false);
 	?>
 	<form action="set_step.php" method="post">
 		<div>
-			<p>Step: ##    Time ### min</p>
+			<?php  echo "<p>Step: " . $seq_status[0] . "    Time: " . round($seq_status[1]) ." min</p>";?>
 			<input type="submit" value="Set step">
 		</div>
 	</form>
